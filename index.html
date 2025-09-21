@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Food Pre-Booking — User</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css" />
+  <!-- QR generator for demo checkout -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="brand">🍴 Food Pre-Booking</div>
+    <nav class="nav">
+      <button id="loginBtn" class="btn secondary">Login (demo)</button>
+      <button id="cartBtn" class="btn">Cart <span id="cartCount" class="badge">0</span></button>
+    </nav>
+  </header>
+
+  <!-- Search/Hero -->
+  <section class="hero">
+    <h1>Pre-book your meal. Skip the wait.</h1>
+    <p class="muted">Same restaurant price • Pickup only</p>
+    <div class="search">
+      <input id="searchInput" type="text" placeholder="Search restaurants or cuisines…" />
+      <button id="searchBtn" class="btn">Search</button>
+    </div>
+  </section>
+
+  <!-- Restaurants -->
+  <main class="container">
+    <h2>Nearby Restaurants</h2>
+    <div id="restaurantsGrid" class="grid"></div>
+  </main>
+
+  <!-- Menu Modal -->
+  <div id="menuModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="menuTitle">Menu</h3>
+        <button id="menuClose" class="icon-btn">&times;</button>
+      </div>
+      <div id="menuBody" class="menu-list"></div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <aside id="cartDrawer" class="drawer hidden">
+    <div class="drawer-header">
+      <h3>Your Cart</h3>
+      <button id="cartClose" class="icon-btn">&times;</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="drawer-footer">
+      <div class="totals">
+        <div><strong>Subtotal:</strong> ₹<span id="subtotal">0</span></div>
+        <div><strong>Discount:</strong> - ₹<span id="discount">0</span></div>
+        <div class="grand"><strong>Grand Total:</strong> ₹<span id="grandTotal">0</span></div>
+      </div>
+      <button id="checkoutBtn" class="btn block">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Checkout Modal -->
+  <div id="checkoutModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Order Confirmed (Simulated Payment)</h3>
+        <button id="checkoutClose" class="icon-btn">&times;</button>
+      </div>
+      <div class="checkout-body">
+        <p><strong>Status:</strong> Paid</p>
+        <p><strong>Pickup OTP:</strong> <span id="otpCode" class="otp"></span></p>
+        <div class="qr-placeholder"><div id="qrcode"></div></div>
+        <p class="small muted">Show QR + tell OTP at pickup. (QR/OTP from backend.)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Demo Login Modal -->
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-content small">
+      <div class="modal-header">
+        <h3>Login (Demo)</h3>
+        <button id="loginClose" class="icon-btn">&times;</button>
+      </div>
+      <form id="loginForm" class="form">
+        <label>Email <input id="email" type="email" required value="user@example.com"/></label>
+        <label>Password <input id="password" type="password" required value="123456"/></label>
+        <button class="btn block" type="submit">Login</button>
+        <p class="small muted">We’ll add real auth later (JWT).</p>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">© 2025 Food Pre-Booking</footer>
+
+  <script src="./app.js"></script>
+  <!-- Toasts -->
+<div id="toasts" class="toasts"></div>
+</body>
+</html>
